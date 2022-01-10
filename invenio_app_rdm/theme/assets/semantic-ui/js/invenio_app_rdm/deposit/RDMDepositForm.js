@@ -167,6 +167,7 @@ export class RDMDepositForm extends Component {
                   )}
                   <FileUploader
                     isDraftRecord={!this.props.record.is_published}
+                    cloudIntegrations={this.props.cloudIntegrations}
                     quota={{
                       maxFiles: 100,
                       maxStorage: 10 ** 10,
