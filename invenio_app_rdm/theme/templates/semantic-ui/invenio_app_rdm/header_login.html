@@ -43,7 +43,7 @@
 
         {%- if config.USERPROFILES %}
           <div id="user-profile-dropdown" class="ui floating dropdown">
-            <button id="user-profile-dropdown-btn"
+            <button type="button" id="user-profile-dropdown-btn"
                     class="ui right labeled right floated icon button text"
                     aria-controls="user-profile-menu"
                     aria-expanded="false"
@@ -61,15 +61,17 @@
                  class="ui menu"
                  role="menu"
                  aria-labelledby="user-profile-dropdown-btn"
+                 aria-activedescendant="item-1"
+                 tabindex="-1"
             >
               {%- for item in current_menu.submenu('settings').children if item.visible %}
-                <a role="menuitem" class="item" href="{{ item.url }}" tabindex="-1">
+                <a id="item-{{ loop.index }}" role="menuitem" class="item" href="{{ item.url }}">
                   {{ item.text|safe }}
                 </a>
               {%- endfor %}
 
               <div class="divider"></div>
-              <a role="menuitem" class="item" href="{{ url_for_security('logout') }}" tabindex="-1">
+              <a id="item-logout" role="menuitem" class="item" href="{{ url_for_security('logout') }}">
                 <i class="sign-out icon"></i>
                 {{ _('Log out') }}
               </a>

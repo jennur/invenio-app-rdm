@@ -18,8 +18,8 @@ toggle && toggle.addEventListener("click", toggleMenu, false);
 /* User profile dropdown */
 jquery('#user-profile-dropdown.ui.dropdown')
   .dropdown({
-    showOnFocus: false,
-    selectOnKeydown: false,
+    showOnFocus: true,
+    selectOnKeydown: true,
     action: (text, value, element) => {
       // needed to trigger navigation on keyboard interaction
       let path = element.attr('href');
@@ -30,5 +30,8 @@ jquery('#user-profile-dropdown.ui.dropdown')
     },
     onHide: () => {
       jquery('#user-profile-dropdown-btn').attr('aria-expanded', false)
+    },
+    onChange: (value, text, $choice) => {
+      jquery('#user-profile-menu').attr('aria-activedescendant', $choice.attr("id"));
     }
   });
